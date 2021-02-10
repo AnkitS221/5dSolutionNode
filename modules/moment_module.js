@@ -38,7 +38,6 @@ function addMoment(req, res, next) {
                 else {
                     req.body.tags = (req.body.tags.split(","));
                     req.body.fileName = fileName;
-                    console.log(req.body);
                     const user = new Moment(req.body);
                     user.save((err, doc) => {
                         if (err) {
