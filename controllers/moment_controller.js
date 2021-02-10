@@ -20,5 +20,14 @@ function getMoments(req, res, next) {
         })
 }
 
+function deleteMoment(req, res, next) {
+    momentModule.deleteMoment(req, res, next)
+        .then((data) => {
+            return res.status(200).json(data)
+        })
+        .catch(err => {
+            return res.status(500).json(err)
+        })
+}
 
-module.exports = { addMoment, getMoments }
+module.exports = { addMoment, getMoments, deleteMoment }

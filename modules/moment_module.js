@@ -71,6 +71,22 @@ function getMoments(req, res, next) {
     })
 }
 
+function deleteMoment(req, res, next) {
+    return new Promise((resolve, reject) => {
+        Moment.findByIdAndRemove(req.params.id, (err, moment) => {
+            if (err) {
+                reject({ status: 'Error', message: err })
+                return
+            }
+            if (!moment) {
+                reject({ status: 'Error', message: 'category is not valid' })
+                return
+            }
+            resolve({ status: 'Success', message: 'Success', data: moment })
+        })
+    })
+}
+
 module.exports = {
-    addMoment, getMoments
+    addMoment, getMoments, deleteMoment
 }
