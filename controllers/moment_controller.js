@@ -30,4 +30,14 @@ function deleteMoment(req, res, next) {
         })
 }
 
-module.exports = { addMoment, getMoments, deleteMoment }
+function updateMoment(req, res, next) {
+    momentModule.updateMoment(req, res, next)
+        .then((data) => {
+            return res.status(200).json(data)
+        })
+        .catch(err => {
+            return res.status(500).json(err)
+        })
+}
+
+module.exports = { addMoment, getMoments, deleteMoment, updateMoment }
